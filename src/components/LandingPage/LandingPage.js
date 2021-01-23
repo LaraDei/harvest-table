@@ -10,9 +10,9 @@ export default class LandingPage extends Component{
                 </header>
                 <section>
                     <header>
-                        <h3>Find Free Locale Produce</h3>
+                        <h3>Find Free Local Produce</h3>
                     </header>
-                    <p>Support your comunity by saying no to waste. List your surplus produce here to give to your neighbors or local food banks.</p>
+                    <p>Support your community by saying no to waste. List your surplus produce on Harvest Table and support your neighbors or local food banks.</p>
                 </section>
                
            </div>
