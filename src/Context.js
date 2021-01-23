@@ -19,6 +19,7 @@ export class ItemProvider extends Component {
   state = {
     items: [],
     messages: [],
+    locations: [],
   };
 
   setItemsList = items => {
@@ -33,10 +34,9 @@ export class ItemProvider extends Component {
          return {lat: i.lat, lng:i.lng}
       })
       console.log(myLocations)
-      this.setState( {myLocations} )
+      this.setState( {locations: myLocations} )
   }
   
-
   deleteItem = itemId => {
     // eslint-disable-next-line eqeqeq
     const newList = this.state.items.filter(item => item.id != itemId)
@@ -69,6 +69,7 @@ export class ItemProvider extends Component {
       isLoggedIn: this.state.isLoggedIn,
       setItemsList: this.setItemsList,
       setMsgList: this.setMsgList,
+      setLocationList: this.setLocationList,
       addItem: this.addItem,
       sendMsg: this.sendMsg,
       deleteItem: this.deleteItem,
