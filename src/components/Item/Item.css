@@ -1,0 +1,18 @@
+.item {
+    --note-height: 80 px;
+    height: var(--note-height);
+    margin-bottom: 8px;
+    max-width: 700px;
+    padding: 8px 0 8px 8px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .item p{
+    margin: 5px;
+    text-align: left;
+  }
+  .item-title{
+    font-weight: bold;
+  }

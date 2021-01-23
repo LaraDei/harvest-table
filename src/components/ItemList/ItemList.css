@@ -1,0 +1,17 @@
+.ItemList{
+    display: flex;
+}
+
+
+
+
+.ItemList ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+}
+.ItemList a{
+    text-decoration: none;
+    color: black;
+}
+
