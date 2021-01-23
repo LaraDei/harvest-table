@@ -7,8 +7,8 @@ import {
     GoogleMap,
     useLoadScript,
     // MarkerClusterer,
-    // Marker,
-    // InfoWindow,
+    //Marker,
+    InfoWindow,
   } from "@react-google-maps/api";
   import usePlacesAutocomplete, {
     getGeocode,
@@ -23,10 +23,13 @@ import {
     ComboboxOption,
   } from "@reach/combobox";
 
+  const positions  = [
+      {lat: "38.559005330011075", lng: "-121.48253537546658"},
+      {lat: "38.671668508216705", lng: "-121.20250687361289"},
+      {lat: "38.67985581534705", lng: "-121.22604676782854"},
+      {lat: "38.66248170591882", lng: "-121.27806123413936"}
+  ]
 
-
-
-  //const libraries = ["places"];
   const mapContainerStyle = {
       height: "100vh",
       width: "50vw",
@@ -40,20 +43,15 @@ import {
       lng: -121.485096,
   };
 
-
-
 export default function Map(){
     const context = useContext(Context)
-    console.log(context)
+
     const [ libraries ] = useState(['places']);
 
     const {isLoaded, loadError} = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
         libraries,
         });
-
-  
-    //const [selected, setSelected] = React.useState(null);
 
     const mapRef = React.useRef();
     const onMapLoad = React.useCallback((map) => {
@@ -64,10 +62,12 @@ export default function Map(){
         mapRef.current.panTo({ lat, lng });
         mapRef.current.setZoom(14);
     }, []);
-    // const onLoad = infoWindow => {
-    //     console.log('infoWindow: ', infoWindow)
-    //   }
+    const onLoad = infoWindow => {
+        console.log('infoWindow: ', infoWindow)
+      }
+    const myLocations = context.locations
 
+    
     if (loadError) return "Error";
     if (!isLoaded) return "Loading...";
 
@@ -93,35 +93,14 @@ export default function Map(){
                 // onClick={onMapClick}
                 onLoad={onMapLoad}
             >
-             {/* {myLocations.map((loc)=>(
-                 <InfoWindow position={loc} onLoad={onLoad}>
+             {positions.map((pos)=>(
+                 <InfoWindow position={pos} onLoad={onLoad}>
                  <div >
                  <h1>InfoWindow</h1>
                 </div>
                 </InfoWindow>
-
-             )
-             )} */}
-
-
-        {/* {selected ? (
-          <InfoWindow
-            position={{ lat: selected.lat, lng: selected.lng }}
-            onCloseClick={() => {
-              setSelected(null);
-            }}
-          >
-            <div>
-              <h2>
-              <FontAwesomeIcon icon={faAppleAlt} />{" "}
-              </h2>
-              <p>Spotted {formatRelative(selected.time, new Date())}</p>
-            </div>
-          </InfoWindow>
-        ) : null} */}
-
+             ))}
             </GoogleMap>
-
         </div>
     )
 }
@@ -206,3 +185,4 @@ function Locate({ panTo }) {
       </div>
     );
   }
+

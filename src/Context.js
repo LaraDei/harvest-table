@@ -35,6 +35,7 @@ export class ItemProvider extends Component {
       })
       console.log(myLocations)
       this.setState( {locations: myLocations} )
+      console.log(this.state.locations)
   }
   
   deleteItem = itemId => {
@@ -66,6 +67,7 @@ export class ItemProvider extends Component {
     const value = {
       items: this.state.items,
       messages: this.state.messages,
+      locations: this.state.locations,
       isLoggedIn: this.state.isLoggedIn,
       setItemsList: this.setItemsList,
       setMsgList: this.setMsgList,
