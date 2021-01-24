@@ -23,12 +23,6 @@ import {
     ComboboxOption,
   } from "@reach/combobox";
 
-//   const positions  = [
-//       {lat: "38.559005330011075", lng: "-121.48253537546658"},
-//       {lat: "38.671668508216705", lng: "-121.20250687361289"},
-//       {lat: "38.67985581534705", lng: "-121.22604676782854"},
-//       {lat: "38.66248170591882", lng: "-121.27806123413936"}
-//   ]
 
   const mapContainerStyle = {
       height: "100vh",
