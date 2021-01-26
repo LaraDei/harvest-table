@@ -17,7 +17,7 @@ export default class App extends Component {
 componentDidMount() {
   // fake date loading from API call
   setTimeout(() => this.context.setItemsList(Store.items), 1);
-  setTimeout(() => this.context.setLocationList(Store.items), 5);
+ // setTimeout(() => this.context.setLocationList(Store.items), 5);
 }
   renderMainRoutes(){
     return(

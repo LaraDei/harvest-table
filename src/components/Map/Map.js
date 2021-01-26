@@ -1,8 +1,10 @@
 import React, { useContext, useState } from 'react'
 import "@reach/combobox/styles.css";
 import Context from '../../Context'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {  faLocationArrow } from'@fortawesome/free-solid-svg-icons'
+import Search from './Search'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import {  faLocationArrow } from'@fortawesome/free-solid-svg-icons'
+import Locate from './Locate'
 import {
     GoogleMap,
     useLoadScript,
@@ -10,18 +12,8 @@ import {
     //Marker,
     InfoWindow,
   } from "@react-google-maps/api";
-  import usePlacesAutocomplete, {
-    getGeocode,
-    getLatLng,
-  } from "use-places-autocomplete";
   //import { formatRelative } from "date-fns";
-  import {
-    Combobox,
-    ComboboxInput,
-    ComboboxPopover,
-    ComboboxList,
-    ComboboxOption,
-  } from "@reach/combobox";
+
 
 
   const mapContainerStyle = {
@@ -39,6 +31,7 @@ import {
 
 export default function Map(){
     const context = useContext(Context)
+    const items = context.items
 
     const [ libraries ] = useState(['places']);
 
@@ -57,11 +50,8 @@ export default function Map(){
         mapRef.current.setZoom(14);
     }, []);
     const onLoad = infoWindow => {
-        console.log('infoWindow: ', infoWindow)
       }
-    const myLocations = context.locations
-
-    
+  
     if (loadError) return "Error";
     if (!isLoaded) return "Loading...";
 
@@ -87,96 +77,19 @@ export default function Map(){
                 // onClick={onMapClick}
                 onLoad={onMapLoad}
             >
-             {myLocations.map((pos)=>(
-                 <InfoWindow onLoad={onLoad} position={pos}>
-                 <div >
-                 <h1>Produce</h1>
+            {items.map(i =>
+                <InfoWindow
+                    key = {i.lat}
+                    onLoad={onLoad} 
+                    position={{lat: i.lat, lng:i.lng}}
+                >
+                <div >
+                <img  src={i.img_location} alt={i.name} width="40" height="40"/>
+                    <h3>{i.name}</h3>
                 </div>
                 </InfoWindow>
-             ))}
+            )}
             </GoogleMap>
         </div>
     )
 }
-
-
-function Locate({ panTo }) {
-    return (
-      <button
-        className="locate"
-        onClick={() => {
-          navigator.geolocation.getCurrentPosition(
-            (position) => {
-                console.log(position)
-              panTo({
-                lat: position.coords.latitude,
-                lng: position.coords.longitude,
-              });
-            },
-            () => null
-            
-          );
-        }}
-      >
-         Locate{" "}<FontAwesomeIcon icon={faLocationArrow} />
-      </button>
-    );
-  }
-  
-  function Search({ panTo }) {
-    const {
-      ready,
-      value,
-      suggestions: { status, data },
-      setValue,
-      clearSuggestions,
-    } = usePlacesAutocomplete({
-      requestOptions: {
-        location: { lat: () => 38.574077, lng: () => -121.485096 },
-        radius: 100 * 1000,
-      },
-      
-    });
-  
-    const handleInput = (e) => {
-      setValue(e.target.value);
-    };
-  
-    const handleSelect = async (address) => {
-      setValue(address, false);
-      clearSuggestions();
-  
-      try {
-        const results = await getGeocode({ address });
-        const { lat, lng } = await getLatLng(results[0]);
-        console.log(lat)
-        console.log(results)
-        console.log(address)
-        panTo({ lat, lng });
-      } catch (error) {
-        console.log("😱 Error: ", error);
-      }
-    };
-  
-    return (
-      <div className="search">
-        <Combobox onSelect={handleSelect}>
-          <ComboboxInput
-            value={value}
-            onChange={handleInput}
-            disabled={!ready}
-            placeholder="Search your location"
-          />
-          <ComboboxPopover>
-            <ComboboxList>
-              {status === "OK" &&
-                data.map(({ id, description }) => (
-                  <ComboboxOption key={id} value={description} />
-                ))}
-            </ComboboxList>
-          </ComboboxPopover>
-        </Combobox>
-      </div>
-    );
-  }
-

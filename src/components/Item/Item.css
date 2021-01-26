@@ -6,13 +6,21 @@
     padding: 8px 0 8px 8px;
     position: relative;
     display: flex;
-    justify-content: center;
     align-items: center;
+    background-color: azure;
   }
   .item p{
     margin: 5px;
     text-align: left;
+    font-size: smaller;
   }
   .item-title{
     font-weight: bold;
+  }
+  .item-details{
+    width: 100%;
+  }
+  .item-first-line{
+    display: flex;
+    justify-content: space-between;
   }
