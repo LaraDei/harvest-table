@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 const Context = React.createContext({
     items: [],
     messages: [],
-    //locations: [],
     isLoggedIn: false,
     setMsgList: () => {},
     setItemsList: ()=> {},
@@ -19,24 +18,16 @@ export class ItemProvider extends Component {
   state = {
     items: [],
     messages: [],
-    //locations: [],
   };
 
   setItemsList = items => {
     this.setState( {items} )
+    // console.log(this.state)
   }
 
   setMsgList = messages => {
     this.setState( {messages} )
   }
-  // setLocationList = items => {
-  //     const myLocations = items.map((i) => {
-  //        return {lat: i.lat, lng:i.lng}
-  //     })
-  //     console.log(myLocations)
-  //     this.setState( {locations: myLocations} )
-  //     console.log(this.state.locations)
-  // }
   
   deleteItem = itemId => {
     // eslint-disable-next-line eqeqeq
@@ -61,13 +52,18 @@ export class ItemProvider extends Component {
         },
     )
   }
-  
+  handleLog = e => {
+    this.setState(prevState => {
+      return {
+        isLoggedIn: !prevState.isLoggedIn
+      }
+  })
+  }
 
   render() {
     const value = {
       items: this.state.items,
-      messages: this.state.messages,
-     // locations: this.state.locations,
+      // messages: this.state.messages,
       isLoggedIn: this.state.isLoggedIn,
       setItemsList: this.setItemsList,
       setMsgList: this.setMsgList,
@@ -75,6 +71,7 @@ export class ItemProvider extends Component {
       addItem: this.addItem,
       sendMsg: this.sendMsg,
       deleteItem: this.deleteItem,
+      handleLog: this.handleLog
     }
     return (
       <Context.Provider value={value}>

@@ -14,6 +14,7 @@ export default class ItemList extends Component {
     static contextType = Context
     render(){
         const {items=[]} = this.context
+        console.log(items)
         return(
             <section className='ItemList'>
                 <ul>
@@ -25,7 +26,7 @@ export default class ItemList extends Component {
                         </li>
                     )}
                 </ul>
-                <div className='mapcontainer'><Map></Map></div>
+                <div className='mapcontainer'><Map/></div>
             </section>
         )
     }

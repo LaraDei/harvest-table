@@ -6,19 +6,21 @@ import Dashboard from './components/Dashboard/Dashboard'
 import SignUp from './components/SignUp/SignUp'
 import SignIn from './components/SignIn/SignIn'
 import ItemList from './components/ItemList/ItemList'
-import Store from './Store'
 import NotFound from './components/NotFound/NotFound'
-import './App.css';
 import ItemPage from './components/ItemPage/ItemPage'
-import context from './Context'
-
+import Context from './Context'
+import ListingsApiService from './services/listings-api-service'
+import './App.css';
+import AddItem from './components/AddItem/AddItem'
 export default class App extends Component {
-  static contextType = context
+  static contextType = Context
 componentDidMount() {
-  // fake date loading from API call
-  setTimeout(() => this.context.setItemsList(Store.items), 1);
- // setTimeout(() => this.context.setLocationList(Store.items), 5);
-}
+  ListingsApiService.getListings()
+      .then(this.context.setItemsList)
+      .catch(error => {
+        console.error({error});
+      })
+  }
   renderMainRoutes(){
     return(
       <>
@@ -33,11 +35,11 @@ componentDidMount() {
             component={Dashboard}
         />
         <Route
-            path='/sign-up'
+            path='/register'
             component={SignUp}
         />
         <Route
-            path='/sign-in'
+            path='/login'
             component={SignIn}
         />
          <Route
@@ -47,6 +49,10 @@ componentDidMount() {
         <Route
             path="/item/:itemId"
             component={ItemPage}
+        />
+        <Route
+            path="/create-listing"
+            component={AddItem}
         />
         <Route exact path='*' component={NotFound} />
         </Switch>

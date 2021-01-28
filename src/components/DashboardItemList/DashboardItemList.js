@@ -4,6 +4,7 @@ import Item from '../Item/Item'
 import Context from '../../Context'
 import './DashboardItemList.css'
 import { getItemsForUser } from '../../Helpers'
+import config from '../../config'
 
 
 export default class DashboardItemList extends Component {
@@ -19,7 +20,7 @@ export default class DashboardItemList extends Component {
         const itemsForUser = getItemsForUser(items, userId) || { content: '' }
         return(
             <section className='DashboardItemList'>
-                <h3>Your Listings</h3>
+                <h3>{window.localStorage.getItem(config.USER_NAME)}'s Listings</h3>
                 <div className='DasboardList'>
                 <ul>
                     {itemsForUser.map(item =>

@@ -4,6 +4,7 @@ import Context from '../../Context'
 import Search from './Search'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import {  faLocationArrow } from'@fortawesome/free-solid-svg-icons'
+import { format } from "date-fns";
 import Locate from './Locate'
 import {
     GoogleMap,
@@ -74,18 +75,18 @@ export default function Map(){
                 zoom={10}
                 center={center}
                 options={options}
-                // onClick={onMapClick}
                 onLoad={onMapLoad}
             >
             {items.map(i =>
                 <InfoWindow
                     key = {i.lat}
                     onLoad={onLoad} 
-                    position={{lat: i.lat, lng:i.lng}}
+                    position={{lat: parseFloat(i.lat), lng: parseFloat(i.lng)}}
                 >
                 <div >
-                <img  src={i.img_location} alt={i.name} width="40" height="40"/>
-                    <h3>{i.name}</h3>
+                <img  src={i.img_location} alt={i.title} width="40" height="40"/>
+                    <h3>{i.title}</h3>
+                    <p>{format(Date.parse(i.date_modified), 'E MM/dd/yyyy')}</p>
                 </div>
                 </InfoWindow>
             )}

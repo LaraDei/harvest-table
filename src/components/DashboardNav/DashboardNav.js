@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {NavLink} from 'react-router-dom'
 import './DashboardNav.css'
+import config from '../../config'
 
 export default class DashboardNav extends Component{
     
@@ -11,13 +12,13 @@ export default class DashboardNav extends Component{
                 <NavLink
                 exact
                     className='DashboardNav-link'
-                    to={`/user/:userId/items`}
+                    to={`/user/${window.localStorage.getItem(config.USER_ID)}`}
                 >
                     Your Listings
                 </NavLink>
                 <NavLink
                     className='DashboardNav-link'
-                    to={`/user/:userId/create-listing`}
+                    to={`/create-listing`}
                 >
                     Create Listing
                 </NavLink>
