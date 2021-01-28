@@ -6,7 +6,7 @@ import DashboardItemList from '../DashboardItemList/DashboardItemList'
 import DashboardNav from '../DashboardNav/DashboardNav'
 import AddItem from '../AddItem/AddItem'
 import Context from '../../Context'
-import config from '../../config'
+
 
 export default class Dashboard extends Component{
     static contextType = Context
@@ -38,7 +38,6 @@ export default class Dashboard extends Component{
     }
 
     render(){
-      console.log(config.TOKEN_KEY)
       return(
           <div className='Dashboard'>
               <div className='Dashboard-nav'>

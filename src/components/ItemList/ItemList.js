@@ -14,7 +14,6 @@ export default class ItemList extends Component {
     static contextType = Context
     render(){
         const {items=[]} = this.context
-        console.log(items)
         return(
             <section className='ItemList'>
                 <ul>

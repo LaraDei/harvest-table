@@ -15,16 +15,17 @@ export default class AddItem extends Component{
             title: '',
             location: '',
             address: '',
-            date_created:'',
             lat: 0,
-            lsn: 0,
+            lng: 0,
             formTouched: false,
+            img_location:''
         }
     }
 
     static defaultProps ={
         history: {
-            push: () => {}
+            push: () => {},
+            goBack: () => { }
           },
     }
 
@@ -45,6 +46,7 @@ export default class AddItem extends Component{
     }
      
       handleSelect = address => {
+        this.setState({ address })
         geocodeByAddress(address)
           .then(results => getLatLng(results[0]))
           .then(({ lat, lng }) =>{
@@ -60,13 +62,14 @@ export default class AddItem extends Component{
             title: this.state.title, 
             description: this.state.description,
             img_location: url,
-            location: this.state.location,
+            location: this.state.address,
             lat: this.state.lat,
             lng: this.state.lng
         })
         .then(resListing => {
+            console.log(resListing)
         this.context.addListing(resListing)
-        this.props.history.push('/search')
+        this.props.history.goBack()
         
         })
         .catch(error => {
@@ -76,10 +79,11 @@ export default class AddItem extends Component{
   
    fileUpload = e => {
     this.setState({
-        selectedFile: e.target.files[0]
+        img_location: e.target.files[0]
     })
 }
     render(){
+ 
         console.log(this.state.address)
         console.log(this.state)
         return(
@@ -89,7 +93,7 @@ export default class AddItem extends Component{
                 <section className="regError" role='alert'>
 
                 </section>
-                <form className='add-item-form'>
+                <form className='add-item-form' onSubmit={this.handleListingSubmit}>
                     <div>
                         <label htmlFor='title'>Name</label>
                         <input type='text' name='title' onChange={e => this.updateValue(e.target.value, e.target.name)} placeholder='Kale' required></input>
@@ -103,6 +107,7 @@ export default class AddItem extends Component{
                         <input type='file' name='image' id='image' onChange={(e) => this.fileUpload(e)} required></input>
                     </div>
                     <div className='search-location'>
+                    {window.google && (
                         <PlacesAutocomplete
                             value={this.state.address}
                             onChange={this.handleChange}
@@ -138,9 +143,12 @@ export default class AddItem extends Component{
                             </div>
                             )}
                         </PlacesAutocomplete>
+                    )}
                     </div>
+                    <button className='submitBtn' type="submit">Submit</button>
                 </form>
             </div>
         )
     }
 }
+
