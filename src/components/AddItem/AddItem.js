@@ -13,11 +13,9 @@ export default class AddItem extends Component{
         super(props)
         this.state={
             title: '',
-            location: '',
             address: '',
             lat: 0,
             lng: 0,
-            formTouched: false,
             img_location:''
         }
     }
@@ -57,15 +55,19 @@ export default class AddItem extends Component{
       };
 
       // post new photo to API
-    handleListingSubmit= url => {
-        ListingApiService.postListing({
-            title: this.state.title, 
-            description: this.state.description,
-            img_location: url,
-            location: this.state.address,
-            lat: this.state.lat,
-            lng: this.state.lng
-        })
+    handleListingSubmit= e => {
+        e.preventDefault()
+        
+        const formData  = new FormData();
+        formData.append('img_location', this.state.img_location, this.state.img_location.name);
+        formData.append('title', this.state.title);
+        formData.append('location', this.state.address);
+        formData.append('description', this.state.description);
+        formData.append('lat', this.state.lat);
+        formData.append('lng', this.state.lng);
+        console.log(formData )
+
+        ListingApiService.postListing(formData )
         .then(resListing => {
             console.log(resListing)
         this.context.addListing(resListing)
@@ -83,9 +85,6 @@ export default class AddItem extends Component{
     })
 }
     render(){
- 
-        console.log(this.state.address)
-        console.log(this.state)
         return(
             <div className='AddItem'>
                 <h2>Create a new Listing</h2>

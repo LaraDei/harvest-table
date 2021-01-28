@@ -36,10 +36,10 @@ const ListingsApiService = {
     return fetch(`${config.API_ENDPOINT}/listings`, {
       method: 'POST',
       headers: {
-        'content-type': 'application/json',
         'authorization': `bearer ${TokenService.getAuthToken()}`,
+        'Content-Type': 'multipart/form-data; ',
       },
-      body: JSON.stringify(listing),
+      body: listing,
     })
       .then(res =>
         (!res.ok)
