@@ -13,14 +13,15 @@ export default class Item extends Component{
         const newDate = Date.parse(date)
         const dateFormated = format(newDate, 'E MM/dd/yyyy')
         const fromNow = formatDistanceToNow(newDate)
+        
         return(
             <div className="item">
-                <img  src={this.props.img_location} alt={this.props.name} width="100" height="100"/>
+                <img  src={this.props.img_location} alt={this.props.title} width="100" height="100"/>
                 <div className='item-details'>
                     <div className="item-first-line">
                         <p className="item-title">
                             <Link to={`/item/${this.props.id}`}>
-                                {this.props.name}
+                                {this.props.title}
                             </Link>
                         </p>
                         <p className='mod-date'>

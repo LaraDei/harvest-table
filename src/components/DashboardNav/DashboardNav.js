@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {NavLink} from 'react-router-dom'
 import './DashboardNav.css'
 import config from '../../config'
+import TokenService from '../../services/token-service'
 
 export default class DashboardNav extends Component{
     
@@ -12,7 +13,7 @@ export default class DashboardNav extends Component{
                 <NavLink
                 exact
                     className='DashboardNav-link'
-                    to={`/user/${window.localStorage.getItem(config.USER_ID)}`}
+                    to={TokenService.hasAuthToken() ? `/user/${window.localStorage.getItem(config.USER_ID)}`: `/user/demo`}
                 >
                     Your Listings
                 </NavLink>

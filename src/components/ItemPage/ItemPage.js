@@ -19,8 +19,7 @@ export default class ItemPage extends Component {
         const { items=[] } = this.context 
         const { itemId } = this.props.match.params
         const item = findItem(items, itemId) || { content: '' }
-        console.log(findItem(items, itemId))
-        console.log(findItem)
+        
         return(
             <div className="ItemPage">
                  <button className="backbtn" onClick={() => this.props.history.goBack()}>Back</button>

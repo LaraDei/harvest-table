@@ -12,15 +12,19 @@ import Context from './Context'
 import ListingsApiService from './services/listings-api-service'
 import './App.css';
 import AddItem from './components/AddItem/AddItem'
+
 export default class App extends Component {
+
   static contextType = Context
-componentDidMount() {
-  ListingsApiService.getListings()
-      .then(this.context.setItemsList)
-      .catch(error => {
-        console.error({error});
-      })
+
+  componentDidMount() {
+    ListingsApiService.getListings()
+        .then(this.context.setItemsList)
+        .catch(error => {
+          console.error({error});
+        })
   }
+  
   renderMainRoutes(){
     return(
       <>

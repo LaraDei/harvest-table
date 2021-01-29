@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-//import {Route, Link} from 'react-router-dom'
+import TokenService from '../../services/token-service'
 import Item from '../Item/Item'
 import Context from '../../Context'
 import './DashboardItemList.css'
@@ -20,7 +20,10 @@ export default class DashboardItemList extends Component {
         const itemsForUser = getItemsForUser(items, userId) || { content: '' }
         return(
             <section className='DashboardItemList'>
-                <h3>{window.localStorage.getItem(config.USER_NAME)}'s Listings</h3>
+                {TokenService.hasAuthToken()
+                    ? <h3>{window.localStorage.getItem(config.USER_NAME)}'s Listings</h3>
+                    : <h3>Demo Listings</h3>
+                }
                 <div className='DasboardList'>
                 <ul>
                     {itemsForUser.map(item =>

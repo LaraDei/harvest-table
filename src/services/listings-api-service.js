@@ -23,14 +23,13 @@ const ListingsApiService = {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
-        
       },
     })
-      .then(res =>
+      .then(res => {
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
           : res.json()
-      )
+      })
   },
 
   postListing(listing) {  

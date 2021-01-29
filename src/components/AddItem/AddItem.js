@@ -1,11 +1,12 @@
 import React, {Component} from 'react'
 import Context from '../../Context'
 import ListingApiService from '../../services/listings-api-service'
-// import LocationSearchInput from './searchItem'
+import config from '../../config'
 import PlacesAutocomplete, {
     geocodeByAddress,
     getLatLng,
   }from 'react-places-autocomplete'
+import TokenService from '../../services/token-service'
 
 
 export default class AddItem extends Component{
@@ -68,11 +69,10 @@ export default class AddItem extends Component{
 
         ListingApiService.postListing(formData )
         .then(resListing => {
-            console.log(resListing)
-
-        this.props.history.goBack()
-        
+        this.context.addItem(resListing)
+        this.props.history.push(`/user/${window.localStorage.getItem(config.USER_ID)}`) 
         })
+        
         .catch(error => {
         console.error('add Listing ',{ error })
         })
@@ -87,64 +87,66 @@ export default class AddItem extends Component{
         return(
             <div className='AddItem'>
                 <h2>Create a new Listing</h2>
-                <p>*required</p>
-                <section className="regError" role='alert'>
+                <section className="regError" role='alert'></section>
+                {!TokenService.hasAuthToken()
+                    ? <p>* You must be logged in to post listings</p>
+                    : 
+                    <form className='add-item-form' onSubmit={this.handleListingSubmit}>
+                        <p>*required</p>
+                        <div>
+                            <label htmlFor='title'>Name</label>
+                            <input type='text' name='title' onChange={e => this.updateValue(e.target.value, e.target.name)} placeholder='Kale' required></input>
+                        </div>
+                        <div>
+                            <label htmlFor='description'>Description:</label>
+                            <input type='text' name='description' onChange={e => this.updateValue(e.target.value, e.target.name)} placeholder='located in basket by mailbox'></input>
+                        </div>
+                        <div>
+                            <label id="imgLabel" htmlFor='image'>Image:</label>
+                            <input type='file' name='image' id='image' onChange={(e) => this.fileUpload(e)} ></input>
+                        </div>
+                        <div className='search-location'>
+                        {window.google && (
+                            <PlacesAutocomplete
+                                value={this.state.address}
+                                onChange={this.handleChange}
+                                onSelect={this.handleSelect}
+                            >
+                                {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                                <div>
+                                    <label id="location" htmlFor='location'>Location: </label>
+                                    <input name='location'
+                                    {...getInputProps({
+                                        placeholder: 'Type address ...',
+                                        className: 'location-search-input',
+                                    })}
+                                    />
+                                    <div className="autocomplete-dropdown-container">
+                                    {loading && <div>Loading...</div>}
+                                    {suggestions.map(suggestion => {
+                                        const className = suggestion.active
+                                        ? 'suggestion-item--active'
+                                        : 'suggestion-item';
 
-                </section>
-                <form className='add-item-form' onSubmit={this.handleListingSubmit}>
-                    <div>
-                        <label htmlFor='title'>Name</label>
-                        <input type='text' name='title' onChange={e => this.updateValue(e.target.value, e.target.name)} placeholder='Kale' required></input>
-                    </div>
-                    <div>
-                        <label htmlFor='description'>Description:</label>
-                        <input type='text' name='description' onChange={e => this.updateValue(e.target.value, e.target.name)} placeholder='located in basket by mailbox'></input>
-                    </div>
-                    <div>
-                        <label id="imgLabel" htmlFor='image'>Image:</label>
-                        <input type='file' name='image' id='image' onChange={(e) => this.fileUpload(e)} ></input>
-                    </div>
-                    <div className='search-location'>
-                    {window.google && (
-                        <PlacesAutocomplete
-                            value={this.state.address}
-                            onChange={this.handleChange}
-                            onSelect={this.handleSelect}
-                        >
-                            {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-                            <div>
-                                <label id="location" htmlFor='location'>Location: </label>
-                                <input name='location'
-                                {...getInputProps({
-                                    placeholder: 'Type address ...',
-                                    className: 'location-search-input',
-                                })}
-                                />
-                                <div className="autocomplete-dropdown-container">
-                                {loading && <div>Loading...</div>}
-                                {suggestions.map(suggestion => {
-                                    const className = suggestion.active
-                                    ? 'suggestion-item--active'
-                                    : 'suggestion-item';
-
-                                    return (
-                                    <div key={suggestions.indexOf(suggestion)}
-                                        {...getSuggestionItemProps(suggestion, {
-                                        className, 
-                                        })}
-                                    >
-                                        <span>{suggestion.description}</span>
+                                        return (
+                                        <div key={suggestions.indexOf(suggestion)}
+                                            {...getSuggestionItemProps(suggestion, {
+                                            className, 
+                                            })}
+                                        >
+                                            <span>{suggestion.description}</span>
+                                        </div>
+                                        );
+                                    })}
                                     </div>
-                                    );
-                                })}
                                 </div>
-                            </div>
-                            )}
-                        </PlacesAutocomplete>
-                    )}
-                    </div>
-                    <button className='submitBtn' type="submit">Submit</button>
-                </form>
+                                )}
+                            </PlacesAutocomplete>
+                        )}
+                        </div>
+                        <button className='submitBtn' type="submit">Submit</button>
+                    </form>
+            }
             </div>
         )
     }
