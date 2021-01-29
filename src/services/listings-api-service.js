@@ -23,6 +23,7 @@ const ListingsApiService = {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
+        
       },
     })
       .then(res =>
@@ -33,11 +34,12 @@ const ListingsApiService = {
   },
 
   postListing(listing) {  
-    return fetch(`${config.API_ENDPOINT}/listings`, {
+    const proxyurl = 'https://cors-anywhere.herokuapp.com/';
+    return fetch(`${proxyurl}${config.API_ENDPOINT}/listings`, {
       method: 'POST',
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
-        'Content-Type': 'multipart/form-data; ',
+        'Access-Control-Allow-Origin': 'http://localhost:3000'
       },
       body: listing,
     })

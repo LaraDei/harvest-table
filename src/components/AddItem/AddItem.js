@@ -49,7 +49,7 @@ export default class AddItem extends Component{
           .then(results => getLatLng(results[0]))
           .then(({ lat, lng }) =>{
             this.setState({lat: lat, lng: lng})
-            console.log('Successfully got latitude and longitude', { lat, lng })
+            // console.log('Successfully got latitude and longitude', { lat, lng })
           })
           .catch(error => console.error('Error', error));
       };
@@ -59,18 +59,17 @@ export default class AddItem extends Component{
         e.preventDefault()
         
         const formData  = new FormData();
-        formData.append('img_location', this.state.img_location, this.state.img_location.name);
+        formData.append('img_location', this.state.img_location);
         formData.append('title', this.state.title);
         formData.append('location', this.state.address);
         formData.append('description', this.state.description);
         formData.append('lat', this.state.lat);
         formData.append('lng', this.state.lng);
-        console.log(formData )
 
         ListingApiService.postListing(formData )
         .then(resListing => {
             console.log(resListing)
-        this.context.addListing(resListing)
+
         this.props.history.goBack()
         
         })
@@ -103,7 +102,7 @@ export default class AddItem extends Component{
                     </div>
                     <div>
                         <label id="imgLabel" htmlFor='image'>Image:</label>
-                        <input type='file' name='image' id='image' onChange={(e) => this.fileUpload(e)} required></input>
+                        <input type='file' name='image' id='image' onChange={(e) => this.fileUpload(e)} ></input>
                     </div>
                     <div className='search-location'>
                     {window.google && (
