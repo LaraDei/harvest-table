@@ -34,12 +34,12 @@ const ListingsApiService = {
   },
 
   postListing(listing) {  
-    const proxyurl = 'https://cors-anywhere.herokuapp.com/';
-    return fetch(`${proxyurl}${config.API_ENDPOINT}/listings`, {
+    //const proxyurl = 'https://cors-anywhere.herokuapp.com/';
+    return fetch(`${config.API_ENDPOINT}/listings`, {
       method: 'POST',
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
-        'Access-Control-Allow-Origin': 'http://localhost:3000'
+        // 'Access-Control-Allow-Origin': 'http://localhost:3000'
       },
       body: listing,
     })

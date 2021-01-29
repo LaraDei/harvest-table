@@ -79,7 +79,7 @@ export default function Map(){
             >
             {items.map(i =>
                 <InfoWindow
-                    key = {i.lat}
+                    key = {i.img_location}
                     onLoad={onLoad} 
                     position={{lat: parseFloat(i.lat), lng: parseFloat(i.lng)}}
                 >
