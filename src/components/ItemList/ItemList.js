@@ -6,7 +6,7 @@ import './ItemList.css'
 import Map from '../Map/Map'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {  faSearch } from'@fortawesome/free-solid-svg-icons'
-import ListingsApiService from '../../services/listings-api-service'
+// import ListingsApiService from '../../services/listings-api-service'
 
 export default class ItemList extends Component {
     static defaultProps = {
