@@ -17,6 +17,19 @@ const ListingsApiService = {
           : res.json()
         )
   },
+  searchListings(term) {
+    return fetch(`${config.API_ENDPOINT}/listings?q=${term}`, {
+        method: 'GET',
+        headers: {
+          'content-type': 'application/json',
+        },
+      })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+        )
+  },
 
   getListing(listingId) {
     return fetch(`${config.API_ENDPOINT}/listings/${listingId}`, {
