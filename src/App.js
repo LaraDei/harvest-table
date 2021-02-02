@@ -14,14 +14,20 @@ import './App.css';
 import AddItem from './components/AddItem/AddItem'
 
 export default class App extends Component {
+  constructor(props){
+    super(props)
+    this.state={
+        error: null
+    }
+}
 
   static contextType = Context
 
   componentDidMount() {
     ListingsApiService.getListings()
         .then(this.context.setItemsList)
-        .catch(error => {
-          console.error({error});
+        .catch(res => {
+          this.setState({ error: res.error })
         })
   }
   
@@ -65,10 +71,12 @@ export default class App extends Component {
 }
 
   render(){
+    const { error } = this.state
     return (
       <div className="App">
         <NavBar/>
         <main className="app-main">
+        <section className="regError" role='alert'>{error}</section>
           {this.renderMainRoutes()}
         </main>
         <footer>Harvest Table</footer>

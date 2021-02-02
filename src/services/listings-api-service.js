@@ -61,14 +61,14 @@ const ListingsApiService = {
           : res.json()
       )
   },
-  deleteListing(listing) {
-    return fetch(`${config.API_ENDPOINT}/listings/${listing.id}`, {
+  deleteListing(itemId) {
+    return fetch(`${config.API_ENDPOINT}/listings/${itemId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
-      body: JSON.stringify(listing),
+      // body: JSON.stringify(listing),
     })
       .then(res =>
         (!res.ok)

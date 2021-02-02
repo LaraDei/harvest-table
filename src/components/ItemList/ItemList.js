@@ -39,10 +39,8 @@ export default class ItemList extends Component {
     }
 
     render(){
-        const {items=[]} = this.context
-        const listings = this.state.filteredListings
-        console.log(listings)
-        console.log(items)
+        // const {items=[]} = this.context
+        // const listings = this.state.filteredListings
         return(
             <div className="searchPage">
                 <div className="search-container">

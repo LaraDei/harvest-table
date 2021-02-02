@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import AuthApiService from '../../services/auth-service'
 import TokenService from '../../services/token-service'
 import './SignIn.css'
+import Context from '../../Context'
 
 
 export default class SignIn extends Component{
- 
+    static contextType = Context
     constructor(props){
         super(props)
         this.state={
@@ -23,6 +24,7 @@ export default class SignIn extends Component{
     handleLoginSuccess = () => {
         const { history } = this.props
         history.push(`/user/${this.state.user_id}`)
+        this.context.handleLog()
         TokenService.hasAuthToken()
     }
 

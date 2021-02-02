@@ -17,7 +17,8 @@ export default class AddItem extends Component{
             address: '',
             lat: 0,
             lng: 0,
-            img_location:''
+            img_location:'',
+            error: null
         }
     }
 
@@ -31,6 +32,7 @@ export default class AddItem extends Component{
     static contextType = Context
     //collect required data before photo submit
     handleChange = address => {
+        this.setState({ error: null });
         this.setState({ address });
     };
     updateValue= (value, key) => {
@@ -50,7 +52,7 @@ export default class AddItem extends Component{
           .then(results => getLatLng(results[0]))
           .then(({ lat, lng }) =>{
             this.setState({lat: lat, lng: lng})
-            // console.log('Successfully got latitude and longitude', { lat, lng })
+            //console.log('Successfully got latitude and longitude', { lat, lng })
           })
           .catch(error => console.error('Error', error));
       };
@@ -58,7 +60,10 @@ export default class AddItem extends Component{
       // post new photo to API
     handleListingSubmit= e => {
         e.preventDefault()
-        
+        if(!this.state.lat){
+            this.setState({error: "you must select address from drop down menu"})
+            return
+        }
         const formData  = new FormData();
         formData.append('img_location', this.state.img_location);
         formData.append('title', this.state.title);
@@ -72,9 +77,8 @@ export default class AddItem extends Component{
         this.context.addItem(resListing)
         this.props.history.push(`/user/${window.localStorage.getItem(config.USER_ID)}`) 
         })
-        
-        .catch(error => {
-        console.error('add Listing ',{ error })
+        .catch(res => {
+            this.setState({ error: `Upload error. Please check file type of upload: ${res.error.message}`  })
         })
     }
   
@@ -84,26 +88,28 @@ export default class AddItem extends Component{
     })
 }
     render(){
+        const { error } = this.state
         return(
             <div className='AddItem'>
                 <h2>Create a new Listing</h2>
-                <section className="regError" role='alert'></section>
+                <section className="regError" role='alert'>{error}</section>
                 {!TokenService.hasAuthToken()
                     ? <p>* You must be logged in to post listings</p>
                     : 
                     <form className='add-item-form' onSubmit={this.handleListingSubmit}>
                         <p>*required</p>
                         <div>
-                            <label htmlFor='title'>Name</label>
-                            <input type='text' name='title' onChange={e => this.updateValue(e.target.value, e.target.name)} placeholder='Kale' required></input>
+                            <label htmlFor='title'>Name: </label>
+                            <input type='text' name='title' onChange={e => this.updateValue(e.target.value, e.target.name)} placeholder='name of produce*' required></input>
                         </div>
                         <div>
-                            <label htmlFor='description'>Description:</label>
-                            <input type='text' name='description' onChange={e => this.updateValue(e.target.value, e.target.name)} placeholder='located in basket by mailbox'></input>
+                            <label htmlFor='description'>Description: </label>
+                            <input type='text' name='description' onChange={e => this.updateValue(e.target.value, e.target.name)} placeholder='additional information'></input>
                         </div>
                         <div>
-                            <label id="imgLabel" htmlFor='image'>Image:</label>
-                            <input type='file' name='image' id='image' onChange={(e) => this.fileUpload(e)} ></input>
+                            <label id="imgLabel" htmlFor='image'>Image: </label>
+                            <input type='file' name='image' id='image' onChange={(e) => this.fileUpload(e)} required></input>
+                            <p>*must be JPEG or PNG</p>
                         </div>
                         <div className='search-location'>
                         {window.google && (
@@ -115,9 +121,9 @@ export default class AddItem extends Component{
                                 {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                                 <div>
                                     <label id="location" htmlFor='location'>Location: </label>
-                                    <input name='location'
+                                    <input required name='location'
                                     {...getInputProps({
-                                        placeholder: 'Type address ...',
+                                        placeholder: 'Type address *',
                                         className: 'location-search-input',
                                     })}
                                     />
