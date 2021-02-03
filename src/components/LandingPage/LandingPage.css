@@ -1,0 +1,24 @@
+.LandingPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+}
+
+
+.LandingPage .app-header{
+    background-color: white;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 25px;
+    border-radius: 10px;
+
+}
+
+.LandingPage section{
+    background-color: white;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}

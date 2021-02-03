@@ -1,7 +1,7 @@
 import React from 'react'
 import AuthApiService from '../../services/auth-service'
 import './SignUp.css'
-
+import HTForm from '../HTForm/HTform'
 
 export default class SignUp extends React.Component{
     constructor(props){
@@ -64,10 +64,11 @@ export default class SignUp extends React.Component{
         const { error } = this.state
         return(
             <div className='Register'>
-                <header>
-                    <h3>Create an Account</h3>
-                </header>
-                <form className='register-form' onSubmit={this.handleSubmit}>
+                <HTForm className='register-form' onSubmit={this.handleSubmit}>
+                    <div>
+                        <h4 className="HTLogo" >Harvest Table</h4>
+                        <h2>Create Your Account</h2>
+                    </div>
                     <div role='alert'>
                         {error && <p className='red'>{error}</p>}
                     </div>
@@ -89,10 +90,15 @@ export default class SignUp extends React.Component{
                                onChange={e => this.updateValue(e.target.value, e.target.id)}
                                minLength="8" maxLength = "25"
                                required/>
-                        <p>*password must be 8-25 characters and contain at least one capital letter and one number.</p>
+                        <p className="text" >*password must be 8-25 characters and contain at least one of the following.</p>
+                        <ul className="text" >
+                            <li>Upper-case letter</li>
+                            <li>Lower-case letter</li>
+                            <li>Number</li>
+                        </ul>
                     </div>
                         <button type='submit'>Register</button>
-                </form>
+                </HTForm>
             </div>
         )
     }

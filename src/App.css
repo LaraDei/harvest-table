@@ -6,23 +6,38 @@
  box-sizing: border-box;
 }
 body{
-  margin: 0;
+  background: #02AAB0;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #00CDAC, #02AAB0) no-repeat center center;  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #00CDAC, #02AAB0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  padding-bottom: 50px;
+  text-align: center;
+
 }
 .App {
-  text-align: center;
-  margin: 0;
+  overflow: hidden;
+  padding-top: 25px;
+  background: url(img/backgroundHT.png) no-repeat center center fixed ; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   height: 100%;
+  display: block;
+  padding-bottom: 450px;
 }
-main{
-  margin-top: 100px;
+.App main{
+  padding-top: 200px;
 }
-footer {
-  background-color: aquamarine;
+.App footer {
+  background-color: #a8d6e2;
   bottom: 0;
   width: 100%;
-  padding-top: 15px;
+  padding: 25px 0;
   position: fixed;
 }
-.app-main{
-  padding-bottom: 150px;
+.HTLogo{
+  font-family: "Gochi Hand";
+  display:flex;
+  align-items: center;
+  justify-content: center;
 }

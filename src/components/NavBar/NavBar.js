@@ -6,6 +6,7 @@ import TokenService from '../../services/token-service'
 import { faBars } from'@fortawesome/free-solid-svg-icons'
 import config from '../../config'
 import './NavBar.css'
+import logo from '../../img/Untitled.png'
 
 export default class NavBar extends Component {
     static contextType = Context  
@@ -73,10 +74,10 @@ export default class NavBar extends Component {
         return(
             <div className="nav-bar">
                 <div className='icon-wrapper'>
-                    <button className='icon' id='nav-button' onClick={e => this.handleNav()}><FontAwesomeIcon icon={faBars}/>{' '}NavMenu</button>
+                    <button className='icon' id='nav-button' onClick={e => this.handleNav()}><FontAwesomeIcon icon={faBars}/>{' '}Menu</button>
                 </div>
-                <ul className="menu"> 
-                    <li><Link to={'/'}>Harvest Table</Link></li>
+                <ul className="menu" id='menu'> 
+                    <li><Link to={'/'} className="HTLogo" ><img src={logo} alt="lemon logo" style={{width:"40px", height:"40px"}}/>Harvest Table</Link></li>
                     <li>{TokenService.hasAuthToken()
                         ? this.renderLogoutLink()
                         : this.renderLoginLink()}

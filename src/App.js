@@ -12,6 +12,7 @@ import Context from './Context'
 import ListingsApiService from './services/listings-api-service'
 import './App.css';
 import AddItem from './components/AddItem/AddItem'
+import logo from './img/Untitled.png'
 
 export default class App extends Component {
   constructor(props){
@@ -79,7 +80,7 @@ export default class App extends Component {
         <section className="regError" role='alert'>{error}</section>
           {this.renderMainRoutes()}
         </main>
-        <footer>Harvest Table</footer>
+        <footer className="HTLogo"><img src={logo} alt="lemon logo" style={{width:"40px", height:"40px"}}/> Harvest Table</footer>
       </div>
     )
   }

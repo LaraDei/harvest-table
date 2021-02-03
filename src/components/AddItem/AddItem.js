@@ -7,7 +7,7 @@ import PlacesAutocomplete, {
     getLatLng,
   }from 'react-places-autocomplete'
 import TokenService from '../../services/token-service'
-
+import HTForm from '../HTForm/HTform'
 
 export default class AddItem extends Component{
     constructor(props){
@@ -91,25 +91,26 @@ export default class AddItem extends Component{
         const { error } = this.state
         return(
             <div className='AddItem'>
-                <h2>Create a new Listing</h2>
                 <section className="regError" role='alert'>{error}</section>
                 {!TokenService.hasAuthToken()
                     ? <p>* You must be logged in to post listings</p>
                     : 
-                    <form className='add-item-form' onSubmit={this.handleListingSubmit}>
-                        <p>*required</p>
+                    <HTForm className='add-item-form' onSubmit={this.handleListingSubmit}>
+                        <div>
+                            <h4 className="HTLogo" >Harvest Table</h4>
+                            <h2>Create Listing</h2>
+                        </div>
                         <div>
                             <label htmlFor='title'>Name: </label>
                             <input type='text' name='title' onChange={e => this.updateValue(e.target.value, e.target.name)} placeholder='name of produce*' required></input>
                         </div>
                         <div>
-                            <label htmlFor='description'>Description: </label>
+                            <label htmlFor='description'>Description: <span style={{float:"right", fontSize:"smaller"}}>(optional)</span></label>
                             <input type='text' name='description' onChange={e => this.updateValue(e.target.value, e.target.name)} placeholder='additional information'></input>
                         </div>
                         <div>
-                            <label id="imgLabel" htmlFor='image'>Image: </label>
-                            <input type='file' name='image' id='image' onChange={(e) => this.fileUpload(e)} required></input>
-                            <p>*must be JPEG or PNG</p>
+                            <label id="imgLabel" htmlFor='image'>Image: <span style={{float:"right", fontSize:"smaller"}}>(must be JPEG or PNG)</span></label>
+                            <input className="file-upload" type='file' name='image' id='image' onChange={(e) => this.fileUpload(e)} required></input>
                         </div>
                         <div className='search-location'>
                         {window.google && (
@@ -151,7 +152,7 @@ export default class AddItem extends Component{
                         )}
                         </div>
                         <button className='submitBtn' type="submit">Submit</button>
-                    </form>
+                    </HTForm>
             }
             </div>
         )

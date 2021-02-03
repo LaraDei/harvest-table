@@ -1,0 +1,89 @@
+.harvestTable-form {
+    background-color: white;
+    color: black;
+    padding: 16px;
+    max-width: 80%;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  
+  .harvestTable-form label {
+    display: block;
+    font-size: 16px;
+    padding: 16px 0 6px ;
+    text-align: left;
+  }
+  .harvestTable-form .text {
+    display: block;
+    font-size: 0.5em;
+    font-size: 16px;
+    text-align: left;
+    list-style-type: none;
+  }
+  
+  .harvestTable-form input,
+  .harvestTable-form textarea,
+  .harvestTable-form select {
+    font-size: 14px;
+    padding: 8px;
+    width: 300px;
+  }
+  
+  .harvestTable-form select {
+    height: 33px;
+  }
+  
+  .harvestTable-form field {
+    margin-bottom: 16px;
+  }
+  .harvestTable-form button {
+    margin-top: 26px;
+  }
+  .harvestTable-form .file-upload::-webkit-file-upload-button {
+    visibility: hidden;
+    max-width: 5px;
+  }
+  .harvestTable-form .file-upload::before {
+  content: 'Select an image';
+  display: inline-block;
+  background-image: linear-gradient( #fff75e, #e9b700);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border: 1px solid #999;
+  border-radius: 5px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 10pt;
+}
+  
+  .harvestTable-form button {
+    background-image: linear-gradient( #5b8e7d, #487063);
+    background-color: #5b8e7d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 8px;
+    border: 0;
+    color: white;
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    width: 80%;
+    margin: auto;
+    margin-top: 25px;
+    align-self: end;
+  }
+  .harvestTable-form button[type="submit"]:hover {
+    background-color: #29862e;
+    color: white;
+    width: 80%;
+  }
+
+  .harvestTable-form h2 {
+    font-size: medium;
+  }

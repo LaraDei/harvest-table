@@ -3,7 +3,7 @@ import AuthApiService from '../../services/auth-service'
 import TokenService from '../../services/token-service'
 import './SignIn.css'
 import Context from '../../Context'
-
+import HTForm from '../HTForm/HTform'
 
 export default class SignIn extends Component{
     static contextType = Context
@@ -55,8 +55,11 @@ export default class SignIn extends Component{
         const { error } = this.state
         return(
             <div className="SignIn">
-                <h1>Sign In</h1>
-                <form className='signin-form' onSubmit={this.handleSubmitJwtAuth}>
+                <HTForm className='signin-form' onSubmit={this.handleSubmitJwtAuth}>
+                    <div>
+                        <h4 className="HTLogo" >Harvest Table</h4>
+                        <h2>Loggin</h2>
+                    </div>
                     <div role='alert'>
                         {error && <p className='red'>{error}</p>}
                     </div>
@@ -72,7 +75,7 @@ export default class SignIn extends Component{
                         required />
                     </div>
                     <button type='submit'>Login</button>
-                </form>
+                </HTForm>
             </div>
         )
     }
