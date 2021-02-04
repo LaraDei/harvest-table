@@ -1,5 +1,18 @@
-.AddItem {
+.AddItem{
+    margin: auto;
     text-align: center;
     display: flex;
     justify-content: center;
 }
+.add-item-form{
+    width: 90%;
+}
+
+@media (min-width: 600px)  {
+    .AddItem {
+        width: 60%;
+    }
+    .add-item-form input{
+        width: 100%;
+    }
+  }

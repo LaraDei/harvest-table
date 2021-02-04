@@ -36,3 +36,11 @@ Map{
 .search-container input{
     width: 65%;
 }
+@media (min-width: 600px)  {
+    .AddItem {
+        width: 60%;
+    }
+    .add-item-form input{
+        width: 100%;
+    }
+  }

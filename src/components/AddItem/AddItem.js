@@ -8,6 +8,7 @@ import PlacesAutocomplete, {
   }from 'react-places-autocomplete'
 import TokenService from '../../services/token-service'
 import HTForm from '../HTForm/HTform'
+import './AddItem.css'
 
 export default class AddItem extends Component{
     constructor(props){
