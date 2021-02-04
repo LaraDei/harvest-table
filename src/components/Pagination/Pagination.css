@@ -1,0 +1,20 @@
+.pagination{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+.pagination ul{
+    display: inline;
+}
+.page-item{
+    list-style-type: none;
+    float: left;
+}
+.pagination button{
+    display: block;
+    margin: 3px;
+    background-image: linear-gradient( #fff75e, #e9b700);
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+}

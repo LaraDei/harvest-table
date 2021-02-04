@@ -13,6 +13,7 @@ import ListingsApiService from './services/listings-api-service'
 import './App.css';
 import AddItem from './components/AddItem/AddItem'
 import logo from './img/Untitled.png'
+import SearchPage from './components/SearchPage/SearchPage'
 
 export default class App extends Component {
   constructor(props){
@@ -55,7 +56,7 @@ export default class App extends Component {
         />
          <Route
             path='/search'
-            component={ItemList}
+            component={SearchPage}
         />
         <Route
             path="/item/:itemId"

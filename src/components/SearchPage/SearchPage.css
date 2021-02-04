@@ -1,0 +1,38 @@
+.searchPage{
+    align-items: center;
+}
+Map{
+    margin: auto;
+}
+.closeContainer .closebtn{
+    max-width: 40px;
+    float: right;
+    margin: 5px;
+    border: none;
+    background-color: inherit;
+}
+.item-list-btn{
+    float: right;
+    margin-right: 10px;
+    padding: 5px 8px;
+    border-radius: 5px;
+    border: none;
+    background-image: linear-gradient( #fff75e, #e9b700);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.item-list-group{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #4C6F87;
+    overflow-x: hidden;
+    transition: 0.5s;
+    margin: 55px 0 0;
+    padding: 60px 0;
+}
+.search-container input{
+    width: 65%;
+}

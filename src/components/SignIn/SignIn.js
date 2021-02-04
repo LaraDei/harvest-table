@@ -58,7 +58,7 @@ export default class SignIn extends Component{
                 <HTForm className='signin-form' onSubmit={this.handleSubmitJwtAuth}>
                     <div>
                         <h4 className="HTLogo" >Harvest Table</h4>
-                        <h2>Loggin</h2>
+                        <h2>Login</h2>
                     </div>
                     <div role='alert'>
                         {error && <p className='red'>{error}</p>}

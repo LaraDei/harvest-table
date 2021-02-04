@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import "@reach/combobox/styles.css";
 import Context from '../../Context'
-import Search from './Search'
+import SearchMap from './Search'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import {  faLocationArrow } from'@fortawesome/free-solid-svg-icons'
 import { format } from "date-fns";
@@ -9,26 +9,23 @@ import Locate from './Locate'
 import {
     GoogleMap,
     useLoadScript,
-    // MarkerClusterer,
-    //Marker,
     InfoWindow,
   } from "@react-google-maps/api";
-  //import { formatRelative } from "date-fns";
+  import './map.css'
 
-
-
-  const mapContainerStyle = {
-      height: "100vh",
-      width: "50vw",
-      };
-  const options = {
-      disableDefaultUI: true,
-      zoomControl: true,
-  };
-  const center = {
-      lat: 38.574077,
-      lng: -121.485096,
-  };
+const mapContainerStyle = {
+    height: "70vh",
+    width: "56vh",
+    margin: "auto"
+};
+const options = {
+    disableDefaultUI: true,
+    zoomControl: true,
+};
+const center = {
+    lat: 38.574077,
+    lng: -121.485096,
+};
 
 export default function Map(){
     const context = useContext(Context)
@@ -59,16 +56,10 @@ export default function Map(){
 
     return(
         <div className='Map'>
-            <h1>
-                Find Produce{" "}
-                <span role="img" aria-label="grapes">🍇</span>
-                <span role="img" aria-label="lemon">🍋</span>
-                <span role="img" aria-label="apple">🍎</span>
-            </h1>
-
-            <Locate panTo={panTo} />
-            <Search panTo={panTo} />
-
+            <div className="flex-map-search">
+                <Locate panTo={panTo} />
+                <SearchMap panTo={panTo} />
+            </div>
             <GoogleMap 
                 id="map"
                 mapContainerStyle={mapContainerStyle}

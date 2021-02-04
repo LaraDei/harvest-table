@@ -6,6 +6,7 @@ import TokenService from '../../services/token-service'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from'@fortawesome/free-solid-svg-icons'
 import ListingsApiService from '../../services/listings-api-service'
+import './ItemPage.css'
 
 export default class ItemPage extends Component {
     constructor(props){
@@ -55,7 +56,7 @@ export default class ItemPage extends Component {
                     {...item}
                 />
                 <div className='ItemPage-content'>
-                   Description:{' '} {item.description}
+                   <span style={{fontWeight:"bold"}}>Description:</span>{' '} {item.description}
                 </div>
             </div>
         )

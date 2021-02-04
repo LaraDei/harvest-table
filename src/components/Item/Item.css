@@ -1,26 +1,40 @@
 .item {
-    --note-height: 80 px;
-    height: var(--note-height);
     margin-bottom: 8px;
-    max-width: 700px;
     padding: 8px 0 8px 8px;
     position: relative;
-    display: flex;
-    align-items: center;
+    height: auto;
     background-color: azure;
+    width: 100%;
+    text-align: left;
+  }
+  .itemHeader{
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 5px;
+  }
+  .item img{
+    width: 80px;
+    height: 80px;
   }
   .item p{
-    margin: 5px;
     text-align: left;
-    font-size: smaller;
+    margin: 2px;
   }
   .item-title{
     font-weight: bold;
+    flex-grow: 2;
+    text-align: left;
+    margin-bottom: 0;
+    margin-top: 15px;
+    margin-left: 5px;
   }
   .item-details{
     width: 100%;
   }
-  .item-first-line{
-    display: flex;
-    justify-content: space-between;
+
+  .mod-date{
+    float: right;
+    margin-top: 0;
+    margin-right: 10px;
+    font-size: 15px;
   }

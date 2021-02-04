@@ -1,8 +1,7 @@
 .harvestTable-form {
     background-color: white;
     color: black;
-    padding: 16px;
-    max-width: 80%;
+    padding: 16px 20px;
     margin: auto;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -27,7 +26,7 @@
   .harvestTable-form select {
     font-size: 14px;
     padding: 8px;
-    width: 300px;
+    width: auto;
   }
   
   .harvestTable-form select {

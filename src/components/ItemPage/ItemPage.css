@@ -1,5 +1,19 @@
-.ItemList ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 10px;
+.ItemPage {
+    margin: auto 20px;
+    padding-bottom: 50px;
   }
+
+.ItemPage-content{
+  background-color: azure;
+  text-align: left;
+}
+
+.backbtn{
+  background-image: linear-gradient( #fff75e, #e9b700);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border: none;
+  border-radius: 5px;
+  padding: 5px 8px;
+  margin-bottom: 10px;
+  align-self: left;
+}
