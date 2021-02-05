@@ -9,6 +9,7 @@ import PlacesAutocomplete, {
 import TokenService from '../../services/token-service'
 import HTForm from '../HTForm/HTform'
 import './AddItem.css'
+import logo from '../../img/Untitled.png'
 
 export default class AddItem extends Component{
     constructor(props){
@@ -53,7 +54,6 @@ export default class AddItem extends Component{
           .then(results => getLatLng(results[0]))
           .then(({ lat, lng }) =>{
             this.setState({lat: lat, lng: lng})
-            //console.log('Successfully got latitude and longitude', { lat, lng })
           })
           .catch(error => console.error('Error', error));
       };
@@ -98,7 +98,7 @@ export default class AddItem extends Component{
                     : 
                     <HTForm className='add-item-form' onSubmit={this.handleListingSubmit}>
                         <div>
-                            <h4 className="HTLogo" >Harvest Table</h4>
+                            <h4 className="HTLogo" ><img src={logo} alt="lemon logo" style={{width:"40px", height:"40px"}}/>Harvest Table</h4>
                             <h2>Create Listing</h2>
                         </div>
                         <div>

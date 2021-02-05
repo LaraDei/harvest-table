@@ -2,6 +2,7 @@ import React from 'react'
 import AuthApiService from '../../services/auth-service'
 import './SignUp.css'
 import HTForm from '../HTForm/HTform'
+import logo from '../../img/Untitled.png'
 
 export default class SignUp extends React.Component{
     constructor(props){
@@ -66,7 +67,7 @@ export default class SignUp extends React.Component{
             <div className='Register'>
                 <HTForm className='register-form' onSubmit={this.handleSubmit}>
                     <div>
-                        <h4 className="HTLogo" >Harvest Table</h4>
+                        <h4 className="HTLogo" ><img src={logo} alt="lemon logo" style={{width:"40px", height:"40px"}}/>Harvest Table</h4>
                         <h2>Create Your Account</h2>
                     </div>
                     <div role='alert'>

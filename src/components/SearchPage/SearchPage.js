@@ -1,12 +1,9 @@
 import React, {Component} from 'react'
-//import {Route, Link} from 'react-router-dom'
-import Item from '../Item/Item'
 import Context from '../../Context'
 import './SearchPage.css'
 import Map from '../Map/Map'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {  faSearch, faTimesCircle, faBars } from'@fortawesome/free-solid-svg-icons'
-// import ListingsApiService from '../../services/listings-api-service'
 import ItemList from '../ItemList/ItemList'
 import Pagination from '../Pagination/Pagination'
 
@@ -16,7 +13,6 @@ export default class SearchPage extends Component {
     constructor(props){
         super(props)
         this.state={
-            itemId: 1,
             filteredListings: [],
             loading: true,
             currentPage: 1,
@@ -38,15 +34,22 @@ export default class SearchPage extends Component {
         const {items=[]} = this.context
         const filteredListings = items.filter(listing =>
             listing.title.toLowerCase().includes(term))
-        this.setState({filteredListings: filteredListings})
+        this.setState({
+            filteredListings: filteredListings,
+            currentPage: 1
+        })
     };
 
     closeList() {
-        document.getElementById("item-list-group").style.width = "0"
+        document.getElementById("item-list-group").classList.remove('open')
     };
 
     openList(){
-        document.getElementById("item-list-group").style.width = "90%";
+        document.getElementById("item-list-group").classList.add('open')
+        this.setState({
+            filteredListings: this.context.items,
+            currentPage: 1
+        })
     }
 
     render(){
@@ -69,15 +72,17 @@ export default class SearchPage extends Component {
                             <button type="submit"><FontAwesomeIcon icon={faSearch} /></button>
                         </form>
                     </div>
-                    <ItemList items={currentItems} loading={this.state.loading}/>
+                    <ItemList items={currentItems}/>
                     <Pagination
                         itemsPerPage={this.state.itemsPerPage}
                         totalItems={this.state.filteredListings.length}
                         paginate={paginate}
                     />
                 </div>
+                <div className="map-group">
                 <button className='item-list-btn'  onClick={e => this.openList()} ><FontAwesomeIcon icon={faBars}/>{' '}List</button>
                 <Map/>
+                </div>
             </div>
         )
     }

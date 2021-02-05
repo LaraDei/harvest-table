@@ -2,8 +2,6 @@ import React, { useContext, useState } from 'react'
 import "@reach/combobox/styles.css";
 import Context from '../../Context'
 import SearchMap from './Search'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import {  faLocationArrow } from'@fortawesome/free-solid-svg-icons'
 import { format } from "date-fns";
 import Locate from './Locate'
 import {
@@ -11,12 +9,10 @@ import {
     useLoadScript,
     InfoWindow,
   } from "@react-google-maps/api";
-  import './map.css'
 
 const mapContainerStyle = {
-    height: "70vh",
-    width: "56vh",
-    margin: "auto"
+    height: "75vh",
+    width: "70vh",
 };
 const options = {
     disableDefaultUI: true,
@@ -85,3 +81,5 @@ export default function Map(){
         </div>
     )
 }
+
+

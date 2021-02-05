@@ -54,7 +54,7 @@ export default class NavBar extends Component {
       return (
         <div className='Header__dashboard-demo'>
           <Link
-            to='/user/demo'>
+            to='/user/1'>
             Demo
           </Link>
         </div>

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-
+import logo from '../../img/Untitled.png'
 import './LandingPage.css'
 
 export default class LandingPage extends Component{
@@ -8,7 +8,7 @@ export default class LandingPage extends Component{
         return(
             <div className='LandingPage'>
                  <header className='app-header'>
-                    <h1 className="HTLogo" >Harvest Table</h1> 
+                    <h1 className="HTLogo" ><img src={logo} alt="lemon logo"/>Harvest Table</h1> 
                 </header>
                
                 <div className="children">

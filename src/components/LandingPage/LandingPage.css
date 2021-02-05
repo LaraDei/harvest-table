@@ -7,7 +7,7 @@
 
 
 .LandingPage .app-header{
-    background-color: white;
+    background-color: azure;
     width: 90%;
     margin: auto;
     margin-bottom: 25px;
@@ -16,9 +16,20 @@
 }
 
 .LandingPage section{
-    background-color: white;
+    background-color: azure;
     width: 90%;
     margin: auto;
     margin-bottom: 15px;
     border-radius: 10px;
+    padding: 10px;
+}
+
+.LandingPage header{
+font-family: "Gochi Hand";
+font-size: larger;
+}
+.LandingPage img{
+    width:80px;
+    height:80px;
+    margin-left:20px;
 }

@@ -5,7 +5,7 @@
     right: 0;
     z-index: 10;
     background-color: #a8d6e2;
-    padding: 5px;
+    padding: 8px;
     overflow: hidden;
   }
     
@@ -60,7 +60,7 @@
     text-align: left;
   }
 
-  @media only screen and (min-width: 600px) {
+  @media  (min-width: 600px) {
     .menu{
       width: 100%;
       display: block;
@@ -72,6 +72,7 @@
     }
     .icon {
       display: none;
+      width: 0;
     }
     .menu :not(:first-child) {
       float: right;

@@ -17,3 +17,33 @@
   margin-bottom: 10px;
   align-self: left;
 }
+
+.deletebtn {
+  background-image: linear-gradient( #5b8e7d, #487063);
+  background-color: #5b8e7d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 8px;
+  border: 0;
+  color: white;
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  width: auto;
+  margin: auto;
+  margin-top: 25px;
+  align-self: end;
+}
+.deletebtn:hover {
+  background-image: linear-gradient( red, #5a0404);
+  color:white;
+}
+
+@media (min-width: 600px)  {
+  .ItemPage {
+    width: 60%;
+    margin: auto;
+  }
+}

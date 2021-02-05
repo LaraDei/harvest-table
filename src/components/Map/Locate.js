@@ -12,7 +12,6 @@ export default function Locate({ panTo }) {
         onClick={() => {
           navigator.geolocation.getCurrentPosition(
             (position) => {
-                //console.log(position)
               panTo({
                 lat: position.coords.latitude,
                 lng: position.coords.longitude,

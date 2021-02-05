@@ -2,7 +2,6 @@ import config from '../config'
 
 const TokenService = {
   hasAuthToken() {
-    // console.log(TokenService.getAuthToken())
     return TokenService.getAuthToken()
   },
   saveAuthToken(token) {

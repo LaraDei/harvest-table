@@ -22,7 +22,6 @@ export class ItemProvider extends Component {
 
   setItemsList = items => {
     this.setState( {items} )
-    // console.log(this.state)
   }
 
   setMsgList = messages => {

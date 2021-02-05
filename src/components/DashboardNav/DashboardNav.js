@@ -13,7 +13,7 @@ export default class DashboardNav extends Component{
                 <NavLink
                 exact
                     className='DashboardNav-link'
-                    to={TokenService.hasAuthToken() ? `/user/${window.localStorage.getItem(config.USER_ID)}`: `/user/demo`}
+                    to={TokenService.hasAuthToken() ? `/user/${window.localStorage.getItem(config.USER_ID)}`: `/user/1`}
                 >
                     Your Listings
                 </NavLink>

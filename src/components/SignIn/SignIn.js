@@ -4,6 +4,7 @@ import TokenService from '../../services/token-service'
 import './SignIn.css'
 import Context from '../../Context'
 import HTForm from '../HTForm/HTform'
+import logo from '../../img/Untitled.png'
 
 export default class SignIn extends Component{
     static contextType = Context
@@ -57,7 +58,7 @@ export default class SignIn extends Component{
             <div className="SignIn">
                 <HTForm className='signin-form' onSubmit={this.handleSubmitJwtAuth}>
                     <div>
-                        <h4 className="HTLogo" >Harvest Table</h4>
+                        <h4 className="HTLogo" ><img src={logo} alt="lemon logo" style={{width:"40px", height:"40px"}}/>Harvest Table</h4>
                         <h2>Login</h2>
                     </div>
                     <div role='alert'>

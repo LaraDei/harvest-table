@@ -15,7 +15,6 @@ export default class SendMessageForm extends React.Component {
     
     handleSubmit= e => {
         e.preventDefault()
-        console.log(this.state.message)
         /** send off the message */
     }
 

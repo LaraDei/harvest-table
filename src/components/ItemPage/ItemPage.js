@@ -48,9 +48,6 @@ export default class ItemPage extends Component {
             <div className="ItemPage">
                 <section className="regError" role='alert'>{error}</section>
                  <button className="backbtn" onClick={() => this.props.history.goBack()}>Back</button>
-                 {TokenService.hasAuthToken()
-                ?<button className="deletebtn" onClick={this.handleItemDelete}><FontAwesomeIcon icon={faTrash} /> Delete</button>
-                : null}
                 <Item
                     key={item.id}
                     {...item}
@@ -58,6 +55,9 @@ export default class ItemPage extends Component {
                 <div className='ItemPage-content'>
                    <span style={{fontWeight:"bold"}}>Description:</span>{' '} {item.description}
                 </div>
+                {TokenService.hasAuthToken()
+                ?<button className="deletebtn" onClick={this.handleItemDelete}><FontAwesomeIcon icon={faTrash} /> Delete</button>
+                : null}
             </div>
         )
     }
