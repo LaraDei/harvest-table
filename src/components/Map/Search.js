@@ -53,6 +53,7 @@ export default function Search({ panTo }) {
             onChange={handleInput}
             disabled={!ready}
             placeholder="Search your location"
+            aria-labelledby="searchLabel"
           />
           <ComboboxPopover>
             <ComboboxList>

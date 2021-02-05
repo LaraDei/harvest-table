@@ -74,23 +74,24 @@ export default class SignUp extends React.Component{
                         {error && <p className='red'>{error}</p>}
                     </div>
                     <div>
-                        <label htmlFor="full_name">Full name: </label>
-                        <input placeholder='Full Name*' type="text" name='full_name' id='fullName' 
+                        <label id="full_name" htmlFor="full_name">Full name: </label>
+                        <input  aria-labelledby="full_name" placeholder='Full Name*' type="text" name='full_name' id='fullName' 
                             onChange={e => this.updateValue(e.target.value, e.target.id)}required />
                     </div>
                     <div>
-                        <label htmlFor="email">Email: </label>
-                        <input type="text" name='email' id='email' placeholder='email*' autoComplete='email'
+                        <label id="email" htmlFor="email">Email: </label>
+                        <input aria-labelledby="email" type="text" name='email' id='email' placeholder='email*' autoComplete='email'
                             onChange={e => this.updateValue(e.target.value, e.target.id)} required/>
                     </div>
                     <div>
-                        <label htmlFor="password">Password: </label>
+                        <label id="password" htmlFor="password">Password: </label>
                         
                         <input type="password" name='password' id='password' placeholder='password*' 
                                autoComplete='new-password'
                                onChange={e => this.updateValue(e.target.value, e.target.id)}
                                minLength="8" maxLength = "25"
-                               required/>
+                               required
+                               aria-labelledby="password"/>
                         <p className="text" >*password must be 8-25 characters and contain at least one of the following.</p>
                         <ul className="text" >
                             <li>Upper-case letter</li>

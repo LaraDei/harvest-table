@@ -102,16 +102,16 @@ export default class AddItem extends Component{
                             <h2>Create Listing</h2>
                         </div>
                         <div>
-                            <label htmlFor='title'>Name: </label>
-                            <input type='text' name='title' onChange={e => this.updateValue(e.target.value, e.target.name)} placeholder='name of produce*' required></input>
+                            <label id='title' htmlFor='title'>Name: </label>
+                            <input aria-labelledby="title" type='text' name='title' onChange={e => this.updateValue(e.target.value, e.target.name)} placeholder='name of produce*' required></input>
                         </div>
                         <div>
-                            <label htmlFor='description'>Description: <span style={{float:"right", fontSize:"smaller"}}>(optional)</span></label>
-                            <input type='text' name='description' onChange={e => this.updateValue(e.target.value, e.target.name)} placeholder='additional information'></input>
+                            <label id="description"htmlFor='description'>Description: <span style={{float:"right", fontSize:"smaller"}}>(optional)</span></label>
+                            <input aria-labelledby="description" type='text' name='description' onChange={e => this.updateValue(e.target.value, e.target.name)} placeholder='additional information'></input>
                         </div>
                         <div>
                             <label id="imgLabel" htmlFor='image'>Image: <span style={{float:"right", fontSize:"smaller"}}>(must be JPEG or PNG)</span></label>
-                            <input className="file-upload" type='file' name='image' id='image' onChange={(e) => this.fileUpload(e)} required></input>
+                            <input aria-labelledby="imgLabel" className="file-upload" type='file' name='image' id='image' onChange={(e) => this.fileUpload(e)} required></input>
                         </div>
                         <div className='search-location'>
                         {window.google && (
@@ -123,7 +123,7 @@ export default class AddItem extends Component{
                                 {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                                 <div>
                                     <label id="location" htmlFor='location'>Location: </label>
-                                    <input required name='location'
+                                    <input required aria-labelledby="location" name='location'
                                     {...getInputProps({
                                         placeholder: 'Type address *',
                                         className: 'location-search-input',

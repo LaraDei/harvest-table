@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# Harvest Table
+[Harvest Table](https://harvest-table.vercel.app/ "Harvest Table")
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). Please see further instruction on React below:
 
-In the project directory, you can run:
+# How to Use Harvest Table
+![Landing Page](/src/img/LandingPage.JPG)
 
-### `npm start`
+Harvest Table allows you to share or find surplus produce in your neighborhood. After creating an account you can create a listing for your produce.
+![Create Listing](/src/img/Upload.JPG)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+You can see the general layout by clicking on the demo link on the navigation bar. 
+![Demo](/src/img/Dashboard.JPG)
+There you will see what the user's dashboard looks like with some listings. You will not be able to add listings from the demo dashboard.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+You can create an account and sign in to access all of the user functions. 
+![Create account](/src/img/Register.JPG)
 
-### `npm test`
+This app is mobile friendly!
+![Mobile Search](/src/img/MobileSearch.JPG)
+![Mobile Map](/src/img/MobileMap.JPG)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# API Documentation
+[Harvest Table API source code](https://github.com/LaraDei/harvest-table "Harvest Table API source code")
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Technology Used
+* JS
+* REACT
+* JSX
+* JQUERY
+* CSS
+* HTML
+* AJAX
+* AWS
+    * S3
+    * IAM
+* JWT
+* GoogleDev
+    * Maps JS
+    * Places
+    * Geocoding
+    * Geolocation
+* SQL
+* postgresql
+* Node
+* Heroku

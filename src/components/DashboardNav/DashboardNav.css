@@ -1,13 +1,15 @@
 .DashboardNav{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    padding-top: 25px;
 }
 .DashboardNav-link {
     margin-right: 1%;
     text-decoration: none;
-    background-color: rgb(135, 220, 223);
+    background-color: #a8d6e2;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5px;
     color: black;
-    padding: 8px;
+    padding: 20px 5px;
 
 }

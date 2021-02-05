@@ -4,6 +4,6 @@ import ItemList from './ItemList'
 
 it('renders without crashing', () => {
   const div = document.createElement('div')
-  ReactDOM.render(<ItemList/>, div)
+  ReactDOM.render(<ItemList items={[]}/>, div)
   ReactDOM.unmountComponentAtNode(div)
 })

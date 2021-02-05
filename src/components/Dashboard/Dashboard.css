@@ -1,3 +1,15 @@
+.Dashboard {
+  background-color: rgb(36, 86, 77, 0.8);
+  border-radius: 10px;
+  width: 95%;
+  margin: auto;
+}
+
+
 @media only screen and (min-width: 600px)  {
     .dashboard-main {margin-top: 2%;}
+    .Dashboard {
+      width: 60%;
+      margin: auto;
+    }
   }

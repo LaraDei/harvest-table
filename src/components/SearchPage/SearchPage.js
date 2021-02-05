@@ -55,7 +55,7 @@ export default class SearchPage extends Component {
     render(){
         const indexOfLastItem = this.state.currentPage * this.state.itemsPerPage;
         const indexOfFirstItem = indexOfLastItem - this.state.itemsPerPage;
-        const currentItems = this.state.filteredListings.slice(indexOfFirstItem, indexOfLastItem);
+        const currentItems = this.state.filteredListings.slice(indexOfFirstItem, indexOfLastItem) || { content: '' };
         const paginate = pageNumber => this.setState({currentPage: pageNumber});
         return(
             <div className="searchPage">
@@ -68,8 +68,9 @@ export default class SearchPage extends Component {
                     </div>
                     <div className="search-container">
                         <form onSubmit={this.handleSearch} >
-                            <input type="search" placeholder="Search.." name="search"/>
-                            <button type="submit"><FontAwesomeIcon icon={faSearch} /></button>
+                            <label id="search" htmlFor="search">Search: </label>
+                            <input aria-labelledby="search" type="search" placeholder="Search.." name="search"/>
+                            <button type="submit"><FontAwesomeIcon icon={faSearch} />Search</button>
                         </form>
                     </div>
                     <ItemList items={currentItems}/>

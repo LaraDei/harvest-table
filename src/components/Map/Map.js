@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react'
-import "@reach/combobox/styles.css";
 import Context from '../../Context'
 import SearchMap from './Search'
 import { format } from "date-fns";
@@ -9,10 +8,12 @@ import {
     useLoadScript,
     InfoWindow,
   } from "@react-google-maps/api";
+import {Link} from 'react-router-dom'
 
 const mapContainerStyle = {
-    height: "75vh",
-    width: "70vh",
+    height: "65vh",
+    width: "98%",
+    margin: "auto",
 };
 const options = {
     disableDefaultUI: true,
@@ -72,7 +73,9 @@ export default function Map(){
                 >
                 <div >
                 <img  src={i.img_location} alt={i.title} width="40" height="40"/>
-                    <h3>{i.title}</h3>
+                    <h3><Link to={`/item/${i.id}`}>
+                                {i.title}
+                        </Link></h3>
                     <p>{format(Date.parse(i.date_modified), 'E MM/dd/yyyy')}</p>
                 </div>
                 </InfoWindow>

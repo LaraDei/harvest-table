@@ -11,7 +11,7 @@ export default class LandingPage extends Component{
                     <h1 className="HTLogo" ><img src={logo} alt="lemon logo"/>Harvest Table</h1> 
                 </header>
                
-                <div className="children">
+                <div className="Landing-children">
                 <section>
                     <header>
                         <h3>Find Free Local Produce</h3>
