@@ -6,6 +6,3 @@ export default {
     USER_ID: 'harvest-table-user-id',
     NODE_ENV: process.env.NODE_ENV || 'development',
 }
-
-//'https://guarded-fjord-58725.herokuapp.com/api'
-//'http://localhost:8000/api'

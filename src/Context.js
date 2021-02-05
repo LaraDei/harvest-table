@@ -62,11 +62,9 @@ export class ItemProvider extends Component {
   render() {
     const value = {
       items: this.state.items,
-      // messages: this.state.messages,
       isLoggedIn: this.state.isLoggedIn,
       setItemsList: this.setItemsList,
       setMsgList: this.setMsgList,
-      //setLocationList: this.setLocationList,
       addItem: this.addItem,
       sendMsg: this.sendMsg,
       deleteItem: this.deleteItem,

@@ -21,7 +21,6 @@ const AuthApiService = {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        // 'authorization': `Bearer ${config.API_KEY}`
       },
       body: JSON.stringify(user),
     })

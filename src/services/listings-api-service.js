@@ -46,12 +46,10 @@ const ListingsApiService = {
   },
 
   postListing(listing) {  
-    //const proxyurl = 'https://cors-anywhere.herokuapp.com/';
     return fetch(`${config.API_ENDPOINT}/listings`, {
       method: 'POST',
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
-        // 'Access-Control-Allow-Origin': 'http://localhost:3000'
       },
       body: listing,
     })
@@ -68,7 +66,6 @@ const ListingsApiService = {
         'content-type': 'application/json',
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
-      // body: JSON.stringify(listing),
     })
       .then(res =>
         (!res.ok)
