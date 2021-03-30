@@ -40,13 +40,6 @@ export default class AddItem extends Component{
     updateValue= (value, key) => {
         this.setState({ [key]: value})
     };
-
-    validateCaption= () => {
-        const caption = this.state.caption.value.trim();
-        if (caption.length === 0) {
-            this.setState({ [caption]: {error : "Please enter a photo caption" }})
-        }
-    }
      
       handleSelect = address => {
         this.setState({ address })
